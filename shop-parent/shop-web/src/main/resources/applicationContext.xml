@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+					    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+					    http://www.springframework.org/schema/context 
+					    http://www.springframework.org/schema/context/spring-context-4.0.xsd 
+					    http://www.springframework.org/schema/aop 
+					    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+	<!--配置文件详解
+	1:<beans>：整个配置文件的根节点，包含一个或多个bean元素
+	2:xmlns="http://www.springframework.org/schema/beans"
+  		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  		最基本的命名空间定义
+  	3:xmlns:context="http://www.springframework.org/schema/context"
+    	启用注解扫描或自动装配时的命名空间
+    4:xmlns:aop="http://www.springframework.org/schema/aop"
+     	xmlns:aop="http://www.springframework.org/schema/tx"
+    	启用AOP功能/声明实物时的命名空间
+    5:与上述命名空间定义相配套的scheam定义文件的装载路径
+	  -->
+    <!-- 开启组件自动扫描，类加上spring组件注解，实现bean的自动载入，扫描路径由base-package属性指定
+    	 spring可以自动去扫描base-pack下面或者子包下面的java文件，
+    	 如果扫描到有@Component (将普通的POJO对象实例化到Spring容器中
+    	 相当于在配置文件写：<bean id = "" class = ""/>
+    	 )@Controller@Service等这些注解的类，则把这些类注册为bean。
+    	有了<context:component-scan>，另一个<context:annotation-config/>标签根本可以移除掉，
+    	因为已经被包含进去了。
+    	1：<context:component-scan>提供两个子标签：
+    	<context:include-filter>和<context:exclude-filter>各代表引入和排除的过滤
+        	只扫描：
+        	<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>   
+        	排除扫描：
+        	Use-dafault-filters=”false”的情况下：
+        	<context:exclude-filter>指定的不扫描，<context:include-filter>指定的扫描
+        	才起作用
+    -->
+    <!-- 在Spring中不需要扫描controlelr注解，交由mvc扫描 -->
+    <context:component-scan base-package="com.zs.*" use-default-filters="false">
+    			 <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />  
+    </context:component-scan>
+    
+    
+	<!-- 
+	它的作用是隐式地向 Spring 容器注册
+	@Resource 、@PostConstruct、@PreDestroy
+	@PersistenceContext
+    @Autowired
+    @Required
+	 <context:component-scan已经替代了该功能
+	<context:annotation-config /> -->
+    
+    <!-- 
+    BasicDataSource提供了close()方法关闭数据源，
+          所以必须设定destroy-method=”close”属性， 
+          以便Spring容器关闭时，数据源能够正常关闭
+          数据库连接池技术的原理：创建数据库连接需要时间，使用完毕时需要关闭连接，并发访问会出现等待的现象。
+    				  可以将创建一次连接的对象不关闭，放入内存，等下次访问时获取内存中的连接对象。放入内存
+    				  中的数据库连接对象就是数据库连接池。
+     -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value = "${db.driver}" /> 
+		<!-- <property name="driverClassName">
+			<value>${db.driver}</value>
+		</property> -->
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+		<!-- <property name="maxActive" value="${db.maxActive}" />
+		<property name="maxIdle" value="${db.maxIdle}" />
+		<property name="maxWait" value="${db.maxWait}" />
+		<property name="defaultAutoCommit" value="${db.defaultAutoCommit}" />
+		<property name="removeAbandoned" value="${db.removeAbandoned}" />
+		<property name="removeAbandonedTimeout" value="${db.removeAbandonedTimeout}" /> -->
+	</bean>
+	
+	<!-- jdbcTemplate
+		对JDBC的封装
+		 在 Spring 的 IoC 容器中配置一个 JdbcTemplate 的 bean，
+		 将 DataSource 注入进来，然后再把JdbcTemplate 注入到自定义DAO 中
+	 -->
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+	</bean>
+    
+</beans>

@@ -1,0 +1,12 @@
+com\zs\shop\common\util\PageResult.class
+com\zs\shop\common\util\AjaxResultUtil.class
+com\zs\shop\common\base\AbstractItem.class
+com\zs\shop\common\annotation\table.class
+com\zs\shop\common\util\ObjectSQLUtil.class
+com\zs\shop\common\annotation\InsertIgnore.class
+com\zs\shop\common\util\TransformUtil.class
+com\zs\shop\common\util\JSONUtil.class
+com\zs\shop\common\annotation\GetIgnore.class
+com\zs\shop\common\util\KeyFactory.class
+com\zs\shop\common\util\Page.class
+com\zs\shop\common\annotation\updateIgnore.class
