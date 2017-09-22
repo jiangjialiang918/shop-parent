@@ -15,7 +15,7 @@ public class DubboConsumerMain {
 		 //远程调用提供者的实现方法
 		String result = demoService.sayHello("World");
 		System.out.println("result = " + result);
-		System.in.read();
+		System.in.read(); 
 	}
 
 }

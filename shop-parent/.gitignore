@@ -1,1 +1,4 @@
 /target/
+/*.classpath
+dubbo-provider/.classpath
+/dubbo-provider/.classpath
