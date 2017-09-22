@@ -7,12 +7,13 @@
   <packaging>pom</packaging>
   <modules>
   	<module>shop-common</module>
-  	<module>shop-core</module>
-  	<module>shop-db</module>
+  	<!-- <module>shop-core</module>
+  	<module>shop-db</module> -->
   	<module>shop-web</module>
   	<module>dubbo-base</module>
-  	<module>shop-pc</module>
-  	<module>shop-cms</module>
+  <!-- 	<module>shop-pc</module>
+  	<module>shop-cms</module> -->
+  	<module>dubbo-provider</module>
   </modules>
   
    <profiles>
