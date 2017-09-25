@@ -64,7 +64,7 @@
         <plugins>
         
             
-            <plugin>
+            <!-- <plugin>
 				<groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>9.0.6.v20130930</version>
@@ -73,7 +73,22 @@
                         <port>8084</port>
                     </httpConnector>
 				</configuration>
-			</plugin>
+			</plugin> -->
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+					<configuration>
+					    <url>http://192.168.1.64:8080/manager/text</url>
+					    <username>admin</username>
+					    <password>admin</password>
+					    <!-- <server>tomcat</server>  -->
+					    <!-- /后面跟项目名(该pom文件的<artifactId>shop-web</artifactId>) ,访问时：http://192.168.1.64:8080/<artifactId>shop-web</artifactId> ,
+					          部署时会在tomcat服务器下生成shop-web.war，也可以不写，不写部署时会在tomcat服务器下生成ROOT.war,访问时不需要带上项目名-->
+					    <update>true</update>
+					    <path>/shop-web</path> 
+				 	</configuration>
+			</plugin> 
         </plugins>
     </build>
 

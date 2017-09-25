@@ -1,13 +1,9 @@
 package com.dubbo_consumer.main;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import com.provider.service.DemoService;
-
 //消费者
 public class DubboConsumerMain {
 
-	public static void main(String[] args) throws Exception {
+	/*public static void main(String[] args) throws Exception {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "applicationConsumer.xml" });
 		context.start();
@@ -16,6 +12,6 @@ public class DubboConsumerMain {
 		String result = demoService.sayHello("World");
 		System.out.println("result = " + result);
 		System.in.read(); 
-	}
+	}*/
 
 }
