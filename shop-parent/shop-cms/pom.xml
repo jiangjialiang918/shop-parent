@@ -30,5 +30,22 @@
 		</dependency>
 
 	</dependencies>
-
+	  <build>
+	<plugins>
+	 <plugin>
+		<groupId>org.eclipse.jetty</groupId>
+	             <artifactId>jetty-maven-plugin</artifactId>
+	             <version>9.0.6.v20130930</version>
+		<configuration>
+	                 <httpConnector>
+	                     <port>8084</port>
+	                 </httpConnector>
+	                 <webAppConfig>
+	                 	<!-- 项目启动访问的根路径，默认为/ -->
+				<contextPath>/shop-cms</contextPath>
+			</webAppConfig>
+		</configuration>
+	</plugin>
+	</plugins>
+    </build>
 </project>

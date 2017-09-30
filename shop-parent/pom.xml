@@ -7,13 +7,13 @@
   <packaging>pom</packaging>
   <modules>
   	<module>shop-common</module>
-  	<!-- <module>shop-core</module>
-  	<module>shop-db</module> -->
-  	<module>shop-web</module>
-  	<module>dubbo-base</module> 
-  <!-- 	<module>shop-pc</module>
-  	<module>shop-cms</module> -->
-  	<module>dubbo-provider</module> 
+  	<module>shop-core</module>
+  	<module>shop-db</module> 
+ 	<module>shop-web</module>
+  	<!-- <module>dubbo-base</module>  -->
+  	<module>shop-pc</module> 
+  	<module>shop-cms</module>
+  	<!-- <module>dubbo-provider</module>  -->
   </modules>
   
    <profiles>
@@ -22,10 +22,10 @@
 		<properties>
 		<db.driver>com.mysql.jdbc.Driver</db.driver>
 		<db.url>jdbc:mysql://localhost:3306/zsshop</db.url>
-		<db.username>zsshop</db.username>
+		<db.username>zs</db.username>
 		<db.password>123456</db.password>
-		<jedis.host>192.168.137.150</jedis.host>
-		<jedis.port>6379</jedis.port>
+		<!-- <jedis.host>192.168.1.64</jedis.host>
+		<jedis.port>6379</jedis.port> -->
 		
 		</properties>
 		</profile>

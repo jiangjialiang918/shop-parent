@@ -37,11 +37,11 @@
 	
 	
 	<!-- 自定义拦截器  -->
-	<mvc:interceptors>
+	<!-- <mvc:interceptors>
         <mvc:interceptor>
         	<mvc:mapping path="/test/dbTest2/**"/>
         	<bean class="com.zs.interceptors.CMSInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors> -->
 
 </beans>

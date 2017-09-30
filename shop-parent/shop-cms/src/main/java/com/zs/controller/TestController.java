@@ -23,7 +23,7 @@ import redis.clients.jedis.JedisPool;
 
 @Controller
 @RequestMapping("/test")
-public class TestController {
+public class TestController {/*
 	
 	@Autowired
 	private IOrderService orderService;
@@ -73,12 +73,12 @@ public class TestController {
 		return AjaxResultUtil.dumpResult(result1);
 	}
 	
-	/**
+	*//**
 	 * jedis
 	 * @author ZhangShuai
 	 * @date 创建时间：2017年4月21日 上午10:26:55
 	 * @return
-	 */
+	 *//*
 	@RequestMapping("/test4")
 	public String test4(){
 		Jedis jedis = new Jedis("192.168.137.150",6379);
@@ -89,11 +89,11 @@ public class TestController {
 		return "index";
 	}
 	
-	/**
+	*//**
 	 * jedisPool
 	 * @author ZhangShuai
 	 * @date 创建时间：2017年4月21日 上午10:26:41
-	 */
+	 *//*
 	@RequestMapping("/test5")
 	@ResponseBody
 	public void test5(){
@@ -226,4 +226,4 @@ public class TestController {
 
 	
 	
-}
+*/}
